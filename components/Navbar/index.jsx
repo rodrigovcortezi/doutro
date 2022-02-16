@@ -5,15 +5,16 @@ import style from './style.module.css'
 
 const NavLink = ({children, active = false}) => {
   return (
-    <Link
-      href="/"
-      className={`flex rounded px-4 items-center text-sm min-h-[36px] ${
-        active
-          ? 'bg-background-600 font-semibold text-primary'
-          : 'font-medium text-secondary'
-      }`}
-    >
-      {children}
+    <Link href="/">
+      <a
+        className={`flex rounded px-4 items-center text-sm min-h-[36px] ${
+          active
+            ? 'bg-background-600 font-semibold text-primary'
+            : 'font-medium text-secondary'
+        }`}
+      >
+        {children}
+      </a>
     </Link>
   )
 }
