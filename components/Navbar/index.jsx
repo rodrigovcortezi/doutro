@@ -28,7 +28,7 @@ const Navbar = () => {
     <div
       className="flex items-center justify-between px-4
                  fixed bottom-0 md:top-0 md:bottom-auto
-                 w-full h-[72px]
+                 w-full h-[72px] z-50
                bg-background-900/90 backdrop-blur-xl"
     >
       <span className={spanStyle}></span>
