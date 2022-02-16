@@ -1,0 +1,9 @@
+.gradient {
+  background-image: linear-gradient(
+    to right,
+    #e39600,
+    #ea4c89,
+    #8f48eb,
+    #1da1f2
+  );
+}
