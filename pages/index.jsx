@@ -3,9 +3,9 @@ import {Navbar} from '../components/Navbar'
 import {ArticleCard} from '../components/ArticleCard'
 import Masonry from '@rodrigovcortezi/react-masonry-css'
 
-import articleData from '../data/articles'
+import Storyblok from '../lib/storyblok'
 
-const IndexPage = () => {
+const IndexPage = ({articleData}) => {
   return (
     <>
       <Navbar />
@@ -18,6 +18,18 @@ const IndexPage = () => {
       </div>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const {data} = await Storyblok.get('cdn/stories?starts_with=blog-articles', {
+    version: 'published',
+    cv: Date.now(),
+  })
+  return {
+    props: {
+      articleData: data.stories.map(d => ({...d.content, id: d.uuid})),
+    },
+  }
 }
 
 export default IndexPage
