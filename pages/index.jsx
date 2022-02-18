@@ -1,15 +1,30 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import {Navbar} from '../components/Navbar'
 import {ArticleCard} from '../components/ArticleCard'
 import Masonry from '@rodrigovcortezi/react-masonry-css'
 
 import Storyblok from '../lib/storyblok'
 
+const useMounted = () => {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+    return () => {
+      setMounted(false)
+    }
+  }, [])
+
+  return mounted
+}
+
 const IndexPage = ({articleData}) => {
+  const mounted = useMounted()
+  // Prevents masonry flashing on first paint
+  const style = mounted ? {} : {display: 'none'}
   return (
     <>
       <Navbar />
-      <div className="px-4 mt-3 max-w-6xl mx-auto">
+      <div style={style} className="px-4 mt-3 max-w-6xl mx-auto">
         <Masonry breakpointCols={{default: 4, 639: 2, 1023: 3}} gutter="14px">
           {articleData.map(article => (
             <ArticleCard key={article.id} article={article} className="mb-5" />
@@ -29,6 +44,7 @@ export async function getStaticProps() {
     props: {
       articleData: data.stories.map(d => ({...d.content, id: d.uuid})),
     },
+    revalidate: 5,
   }
 }
 
