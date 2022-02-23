@@ -45,19 +45,21 @@ const ArticlePage = ({article, body}) => {
           />
         </div>
         <div className="max-w-5xl mx-auto">
-          <div className="mt-5">
-            <h2 className="text-primary text-xl font-semibold">{title}</h2>
-            <p className="text-secondary text-sm mt-2 font-medium">
+          <div className="mt-5 md:mt-7">
+            <h2 className="text-primary text-xl md:text-2xl font-semibold">
+              {title}
+            </h2>
+            <p className="text-secondary text-sm md:text-[.875rem] mt-2 font-medium">
               By {author_name}
             </p>
-            <p className="text-secondary text-tiny mt-[2px]">{`${dateString} · ${duration}`}</p>
+            <p className="text-secondary text-tiny md:text-sm mt-[2px]">{`${dateString} · ${duration}`}</p>
           </div>
         </div>
       </header>
       <main className="mx-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto pb-20">
           <div
-            className="prose mt-11"
+            className="prose max-w-none mt-11"
             dangerouslySetInnerHTML={{__html: body}}
           ></div>
         </div>
