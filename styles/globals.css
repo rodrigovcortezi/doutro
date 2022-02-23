@@ -8,7 +8,6 @@
     padding: 0;
     margin: 0;
     @apply bg-background-900;
-    @apply pb-24 md:pb-0 md:pt-12;
   }
 
   a {

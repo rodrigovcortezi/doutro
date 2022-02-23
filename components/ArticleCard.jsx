@@ -23,7 +23,7 @@ const ArticleCard = ({article, className}) => {
       <h3 className="text-primary text-base font-semibold mt-2 leading-[22px]">
         {title}
       </h3>
-      <div className="text-secondary text-[10px] md:text-xs font-medium mt-1">{`${dateString} · ${duration}`}</div>
+      <div className="text-secondary text-tiny md:text-xs font-medium mt-1">{`${dateString} · ${duration}`}</div>
     </div>
   )
 }
