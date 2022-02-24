@@ -32,15 +32,14 @@ const ArticlePage = ({article, body}) => {
         </div>
       </div>
       <header className="mx-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="relative max-w-6xl mx-auto h-[290px] md:h-[500px]">
           <Image
             src={'https:' + cover.image}
             alt={title}
             placeholder="blur"
             blurDataURL={cover.blurData}
-            layout="responsive"
-            width={cover.width}
-            height={cover.height}
+            layout="fill"
+            objectFit="cover"
             className="rounded-lg"
           />
         </div>
