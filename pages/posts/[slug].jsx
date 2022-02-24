@@ -6,6 +6,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import moment from 'moment'
 import Image from 'next/image'
+import {motion} from 'framer-motion'
 
 const articleBody = article => {
   return unified()
@@ -15,13 +16,38 @@ const articleBody = article => {
     .process(article.body)
 }
 
+const PageWrapper = ({children}) => (
+  <motion.div
+    exit={{opacity: 0, y: 70}}
+    transition={{
+      ease: 'easeIn',
+      duration: 0.2,
+    }}
+  >
+    <motion.div
+      variants={{
+        hidden: {opacity: 0, y: 70},
+        enter: {opacity: 1, y: 0},
+      }}
+      initial="hidden"
+      animate="enter"
+      transition={{
+        ease: 'easeOut',
+        duration: 0.4,
+      }}
+    >
+      {children}
+    </motion.div>
+  </motion.div>
+)
+
 const ArticlePage = ({article, body}) => {
   const {title, cover, date, author_name, reading_time_in_sec} = article
   const dateString = moment(date).format('D MMM, YYYY')
   const reading_time_in_min = Math.floor(reading_time_in_sec / 60)
   const duration = `${reading_time_in_min} min`
   return (
-    <>
+    <PageWrapper>
       <div className="mx-6">
         <div className="max-w-5xl mx-auto py-6">
           <Link href="/">
@@ -63,7 +89,7 @@ const ArticlePage = ({article, body}) => {
           ></div>
         </div>
       </main>
-    </>
+    </PageWrapper>
   )
 }
 
