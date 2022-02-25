@@ -2,6 +2,7 @@ import Api from '../../lib/api'
 import Link from 'next/link'
 import {unified} from 'unified'
 import remarkParse from 'remark-parse'
+import {remarkCodeBlocksShiki} from '@kentcdodds/md-temp'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import moment from 'moment'
@@ -11,6 +12,7 @@ import {motion} from 'framer-motion'
 const articleBody = article => {
   return unified()
     .use(remarkParse)
+    .use(remarkCodeBlocksShiki)
     .use(remarkRehype)
     .use(rehypeStringify)
     .process(article.body)
