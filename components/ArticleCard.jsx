@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import Image from 'next/image'
 
-const ArticleCard = ({article, className}) => {
+const ArticleCard = ({article, className, imageSizes}) => {
   const {title, cover, date, reading_time_in_sec} = article
   const containerStyle = [className, 'relative'].join(' ')
   const dateString = moment(date).format('D MMM, YYYY')
@@ -18,6 +18,7 @@ const ArticleCard = ({article, className}) => {
         layout="responsive"
         width={cover.width}
         height={cover.height}
+        sizes={imageSizes}
         className="rounded"
       />
       <h3 className="text-primary text-base font-semibold mt-2 leading-[22px]">

@@ -42,7 +42,11 @@ const IndexPage = ({articleData}) => {
             {articleData.map(article => (
               <Link key={article.id} href={`/posts/${article.slug}`}>
                 <a>
-                  <ArticleCard article={article} className="mb-5" />
+                  <ArticleCard
+                    article={article}
+                    className="mb-5"
+                    imageSizes={'50vw'}
+                  />
                 </a>
               </Link>
             ))}
