@@ -16,28 +16,39 @@ const articleBody = article => {
     .process(article.body)
 }
 
-const PageWrapper = ({children}) => (
+const AnimationContainer = ({children}) => (
   <motion.div
-    exit={{opacity: 0, y: 70}}
-    transition={{
-      ease: 'easeIn',
-      duration: 0.2,
+    variants={{
+      hidden: {opacity: 0},
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2,
+        },
+      },
+    }}
+    initial="hidden"
+    animate="show"
+  >
+    {children}
+  </motion.div>
+)
+
+const AnimationItem = ({children}) => (
+  <motion.div
+    variants={{
+      hidden: {opacity: 0, y: 40},
+      show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          ease: 'easeOut',
+          duration: 0.6,
+        },
+      },
     }}
   >
-    <motion.div
-      variants={{
-        hidden: {opacity: 0, y: 70},
-        enter: {opacity: 1, y: 0},
-      }}
-      initial="hidden"
-      animate="enter"
-      transition={{
-        ease: 'easeOut',
-        duration: 0.4,
-      }}
-    >
-      {children}
-    </motion.div>
+    {children}
   </motion.div>
 )
 
@@ -47,49 +58,55 @@ const ArticlePage = ({article, body}) => {
   const reading_time_in_min = Math.floor(reading_time_in_sec / 60)
   const duration = `${reading_time_in_min} min`
   return (
-    <PageWrapper>
-      <div className="mx-6">
-        <div className="max-w-5xl mx-auto py-6">
-          <Link href="/">
-            <a className="text-primary font-medium py-3">
-              {'<- Back to overview'}
-            </a>
-          </Link>
-        </div>
-      </div>
-      <header className="mx-6">
-        <div className="relative max-w-6xl mx-auto h-[290px] md:h-[500px]">
-          <Image
-            src={'https:' + cover.image}
-            alt={title}
-            placeholder="blur"
-            blurDataURL={cover.blurData}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
-          />
-        </div>
-        <div className="max-w-5xl mx-auto">
-          <div className="mt-5 md:mt-7">
-            <h2 className="text-primary text-xl md:text-2xl font-semibold">
-              {title}
-            </h2>
-            <p className="text-secondary text-sm md:text-[.875rem] mt-2 font-medium">
-              By {author_name}
-            </p>
-            <p className="text-secondary text-tiny md:text-sm mt-[2px]">{`${dateString} · ${duration}`}</p>
+    <AnimationContainer>
+      <AnimationItem>
+        <div className="mx-6">
+          <div className="max-w-5xl mx-auto py-6">
+            <Link href="/">
+              <a className="text-primary font-medium py-3">
+                {'<- Back to overview'}
+              </a>
+            </Link>
           </div>
         </div>
-      </header>
-      <main className="mx-6">
-        <div className="max-w-5xl mx-auto pb-20">
-          <div
-            className="prose max-w-none mt-11"
-            dangerouslySetInnerHTML={{__html: body}}
-          ></div>
-        </div>
-      </main>
-    </PageWrapper>
+      </AnimationItem>
+      <AnimationItem>
+        <header className="mx-6">
+          <div className="relative max-w-6xl mx-auto h-[290px] md:h-[500px]">
+            <Image
+              src={'https:' + cover.image}
+              alt={title}
+              placeholder="blur"
+              blurDataURL={cover.blurData}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+            />
+          </div>
+          <div className="max-w-5xl mx-auto">
+            <div className="mt-5 md:mt-7">
+              <h2 className="text-primary text-xl md:text-2xl font-semibold">
+                {title}
+              </h2>
+              <p className="text-secondary text-sm md:text-[.875rem] mt-2 font-medium">
+                By {author_name}
+              </p>
+              <p className="text-secondary text-tiny md:text-sm mt-[2px]">{`${dateString} · ${duration}`}</p>
+            </div>
+          </div>
+        </header>
+      </AnimationItem>
+      <AnimationItem>
+        <main className="mx-6">
+          <div className="max-w-5xl mx-auto pb-20">
+            <div
+              className="prose max-w-none mt-11"
+              dangerouslySetInnerHTML={{__html: body}}
+            ></div>
+          </div>
+        </main>
+      </AnimationItem>
+    </AnimationContainer>
   )
 }
 
