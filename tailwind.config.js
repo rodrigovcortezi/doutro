@@ -68,6 +68,20 @@ module.exports = {
                 marginTop: theme('spacing.14'),
                 marginBottom: theme('spacing.7'),
               },
+              pre: {
+                color: 'var(--base05)',
+                backgroundColor: 'var(--base00)',
+                marginTop: 0,
+                marginBottom: theme('spacing.8'),
+                marginLeft: `-${theme('spacing.6')}`,
+                marginRight: `-${theme('spacing.6')}`,
+                padding: theme('spacing.8'),
+                borderRadius: 0,
+
+                [`@media (min-width: ${theme('screens.lg')})`]: {
+                  borderRadius: theme('borderRadius.lg'),
+                },
+              },
               'code, a > code': {
                 color: theme('colors.white'),
               },

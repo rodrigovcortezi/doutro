@@ -104,7 +104,7 @@
 }
 
 pre {
-  --base00: #242424; /* editor background */
+  --base00: #191919; /* editor background */
   --base01: #2d2d2d; /* unused (currently) */
   --base02: #424242; /* unused (currently) */
   --base03: #637777; /* code comments */
