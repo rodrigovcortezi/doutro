@@ -34,26 +34,31 @@ const IndexPage = ({articleData}) => {
   // Prevents masonry flashing on first paint
   const style = mounted ? {} : {visibility: 'hidden'}
   return (
-    <PageWrapper>
-      <div className="pb-24 md:pb-0 md:pt-[5rem]">
-        <Navbar />
-        <div style={style} className="px-4 mt-3 max-w-6xl mx-auto">
-          <Masonry breakpointCols={{default: 4, 639: 2, 1023: 3}} gutter="14px">
-            {articleData.map(article => (
-              <Link key={article.id} href={`/posts/${article.slug}`}>
-                <a>
-                  <ArticleCard
-                    article={article}
-                    className="mb-5"
-                    imageSizes={'50vw'}
-                  />
-                </a>
-              </Link>
-            ))}
-          </Masonry>
+    <>
+      <Navbar />
+      <PageWrapper>
+        <div className="pb-24 md:pb-0 md:pt-[5rem]">
+          <div style={style} className="px-4 mt-3 max-w-6xl mx-auto">
+            <Masonry
+              breakpointCols={{default: 4, 639: 2, 1023: 3}}
+              gutter="14px"
+            >
+              {articleData.map(article => (
+                <Link key={article.id} href={`/posts/${article.slug}`}>
+                  <a>
+                    <ArticleCard
+                      article={article}
+                      className="mb-5"
+                      imageSizes={'50vw'}
+                    />
+                  </a>
+                </Link>
+              ))}
+            </Masonry>
+          </div>
         </div>
-      </div>
-    </PageWrapper>
+      </PageWrapper>
+    </>
   )
 }
 

@@ -1,11 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 import style from './style.module.css'
 
-const NavLink = ({children, active = false}) => {
+const NavLink = ({children, href}) => {
+  const router = useRouter()
+  const active = router.pathname === href
   return (
-    <Link href="/">
+    <Link href={href}>
       <a
         className={`flex rounded px-4 items-center text-sm min-h-[36px] ${
           active
@@ -34,8 +37,8 @@ const Navbar = () => {
       <span className={spanStyle}></span>
       <Image src="/logo.svg" alt="Doutro Logo" width={64} height={33} />
       <div className="flex space-x-[2px]">
-        <NavLink active>Home</NavLink>
-        <NavLink>About</NavLink>
+        <NavLink href="/">Home</NavLink>
+        <NavLink href="/about">About</NavLink>
       </div>
     </div>
   )
