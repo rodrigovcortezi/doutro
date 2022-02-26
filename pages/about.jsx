@@ -14,7 +14,7 @@ const AboutPage = () => {
           <main className="prose mx-auto">
             <p className="text-justify">
               Just an ideia brought to life. My primary goal with this project
-              was to practice some design and software development skills, while
+              was to practice some design and software development skills while
               putting the <strong>user experience</strong> in the center. Now
               that it has all the features of a blog application, I decided to
               use it as a
