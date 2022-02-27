@@ -1,8 +1,12 @@
+import Head from 'next/head'
 import {Navbar} from '../components/Navbar'
 
 const AboutPage = () => {
   return (
     <>
+      <Head>
+        <title>About Doutro</title>
+      </Head>
       <Navbar />
       <div className="mt-9 md:mt-32">
         <header>

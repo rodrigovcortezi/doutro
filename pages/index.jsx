@@ -5,6 +5,7 @@ import Masonry from '@rodrigovcortezi/react-masonry-css'
 
 import Api from '../lib/api'
 import Link from 'next/link'
+import Head from 'next/head'
 import {motion} from 'framer-motion'
 
 const useMounted = () => {
@@ -35,6 +36,9 @@ const IndexPage = ({articleData}) => {
   const style = mounted ? {} : {visibility: 'hidden'}
   return (
     <>
+      <Head>
+        <title>Doutro</title>
+      </Head>
       <Navbar />
       <PageWrapper>
         <div className="pb-24 md:pb-0 md:pt-[5rem]">
