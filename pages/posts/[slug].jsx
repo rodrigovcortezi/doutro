@@ -74,7 +74,7 @@ const ArticlePage = ({article, body}) => {
       </AnimationItem>
       <AnimationItem>
         <header className="mx-6">
-          <div className="relative max-w-6xl mx-auto h-[290px] md:h-[500px]">
+          <div className="relative max-w-6xl mx-auto h-[290px] md:h-[500px] rounded-lg overflow-hidden">
             <Image
               src={'https:' + cover.image}
               alt={title}
@@ -82,7 +82,6 @@ const ArticlePage = ({article, body}) => {
               blurDataURL={cover.blurData}
               layout="fill"
               objectFit="cover"
-              className="rounded-lg"
             />
           </div>
           <div className="max-w-5xl mx-auto">
