@@ -79,7 +79,7 @@ const ArticlePage = ({article, body}) => {
         </AnimationItem>
         <AnimationItem>
           <header className="mx-6">
-            <div className="relative max-w-6xl mx-auto h-[290px] md:h-[500px] rounded-lg overflow-hidden">
+            <div className="relative max-w-6xl mx-auto h-[290px] lg:h-[500px] rounded-lg overflow-hidden">
               <Image
                 src={'https:' + cover.image}
                 alt={title}
