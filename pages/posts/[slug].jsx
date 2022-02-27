@@ -87,6 +87,7 @@ const ArticlePage = ({article, body}) => {
                 blurDataURL={cover.blurData}
                 layout="fill"
                 objectFit="cover"
+                objectPosition="50% 50%"
               />
             </div>
             <div className="max-w-5xl mx-auto">
